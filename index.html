@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const student={
+            firstName:'nick', 
+            lastName:'blackhand', 
+            averageScore:'4',
+            isGrantHolder:function(){
+                if(this.averageScore>=4){ return true; }
+                else return false;
+            },
+            getFullName:function() {
+                console.log(`${this.firstName} ${this.lastName} ${this.isGrantHolder()}`);
+            }
+        };
+
+       student.getFullName();
+       student.isGrantHolder();
+
+       function Aspirant() {
+        this.__proto__ = student,
+        this.dissertationTopic='как путешествовать сквозь пространство и вернуться обратно',
+        this.isDissertationComplete=true;
+        this.isGrantHolder=function(){
+                if(this.averageScore>=4.5&&this.isDissertationComplete==true){ return true; }
+                else return false;
+            };
+        }
+
+        const aspirant = new Aspirant();
+        console.log(aspirant.dissertationTopic);
+        console.log(aspirant.lastName);
+        console.log(aspirant.isGrantHolder());
+
+        for(let value in aspirant){
+            console.log(`${value}`);
+        }
+    </script>
+    
+</body>
+</html>
