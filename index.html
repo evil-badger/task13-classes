@@ -42,6 +42,67 @@
         for(let value in aspirant){
             console.log(`${value}`);
         }
+
+        /////////////////////////////////////////////
+        //Создайте класс Plane со свойствами name и isFlying (по-умолчанию false) и методами takeOff() и land().
+        class Plane{
+            constructor(nameIn){
+                this.name=nameIn;
+                this.isFlying=false;
+            } 
+            //Метод takeOff() меняет значение свойства isFlying на true, а метод land() меняет значение свойства isFlying на false.
+            takeOff(){
+                return this.isFlying=true;
+            }
+            land(){
+                return this.isFlying=false;
+            }
+        }
+        //Создайте объект airport со свойством planes (массив объектов класса Planes ) и методом getFlyingPlanes(), 
+         //который вовзращающий количество элементов из массива planes , у которых isFlying равняется true.
+        const airport={
+            planes:[], 
+            getFlyingPlanes:function(){
+                let sum=0;
+                let tmp=[];
+                for(let index=0;index<this.planes.length;index++){
+                    if(this.planes[index].isFlying==true){
+                        tmp.push(this.planes[index]);
+                        sum+=1;
+                    }
+                }
+                return {tmp,sum};
+              
+            }
+        };
+       
+        //Cоздайте несколько объектов на основе класса Plane и добавьте их в массив самолетов в airport. 
+        let plane1 = new Plane("Ramsey");
+        let plane2 = new Plane("Donovan");
+        let plane3 = new Plane("Marion");
+        let plane4 = new Plane("Logan");
+        let plane5 = new Plane("Jayme");
+        let plane6 = new Plane("Russell");
+        airport.planes.push(plane1, plane2,plane3,plane4,plane5,plane6);
+    
+        //Измените любым объектам значение isFlying на true; 
+        plane2.takeOff();
+        plane4.takeOff();
+        plane6.takeOff();
+
+    //ДЕБАГ
+    //console.log(airport);
+    // console.log(airport.planes);
+    // console.log(airport.planes.length);
+    //console.log(airport.planes[5]);
+    //console.log(airport.planes[5].name);
+    //console.log(airport.planes[5].isFlying);
+    
+        //Продемонстрируйте метод getFlyingPlanes() в работе.
+        //Метод getFlyingPlanes() вовзращает количество элементов из массива planes , у которых isFlying равняется true.
+        console.log(airport.getFlyingPlanes());
+
+      
     </script>
     
 </body>
